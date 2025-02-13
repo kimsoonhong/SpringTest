@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper
+	namespace="com.shong.spring.test.estate.repository.RealEstateRepository">
+
+	<select id="selectRealEstateList"
+		resultType="com.shong.spring.test.estate.domain.RealEstate">
+
+		SELECT
+		*
+		FROM
+		`real_estate`
+		WHERE
+		id = #{id}
+		<!-- 1=1 -->
+		<!-- <if test="id != null"> AND id = #{id} </if> -->
+
+	</select>
+	<select id="selectRealEstateList_rent"
+		resultType="com.shong.spring.test.estate.domain.RealEstate">
+
+
+		SELECT
+		rentPrice
+		FROM
+		`real_estate`
+		WHERE
+		rentPrice IS NOT NULL
+		AND
+		rentPrice > #{rent}
+
+	</select>
+
+
+
+	<select id="selectRealEstateList_area"
+		resultType="com.shong.spring.test.estate.domain.RealEstate">
+
+
+		SELECT
+		*
+		FROM
+		`real_estate`
+		WHERE
+		area > #{area}
+		AND
+		price <= #{price}
+
+
+
+
+	</select>
+
+
+</mapper>
